@@ -65,7 +65,7 @@ const changeSubscriptionsStatus = async (req, res) => {
 const cancelSubscription = async (req, res) => {
 	const { id } = req.params;
 	const { subSchedulesId } = req.body;
-	console.log(subSchedulesId)
+
 	try{
 		if(!subSchedulesId) throw new Error('"subSchedulesId" not found!');
 
@@ -132,11 +132,11 @@ const changeSubscription = async (req, res) => {
 		
 		if(subs.name === 'Standard'){
 			let posts_active = await Publications.find({user: id, active:true});
-			
+			console.log(posts_active);
 			if (posts_active.length > 3){
 				posts_active = posts_active.slice(3);
 			}
-
+			console.log(posts_active);
 			for (let i=0; i<posts_active.length; i++){
 				await Publications.findByIdAndUpdate(posts_active[i]._id, {
 					active: false
