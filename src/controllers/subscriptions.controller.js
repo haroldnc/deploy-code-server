@@ -65,7 +65,7 @@ const changeSubscriptionsStatus = async (req, res) => {
 const cancelSubscription = async (req, res) => {
 	const { id } = req.params;
 	const { subSchedulesId } = req.body;
-
+	console.log(subSchedulesId)
 	try{
 		if(!subSchedulesId) throw new Error('"subSchedulesId" not found!');
 
